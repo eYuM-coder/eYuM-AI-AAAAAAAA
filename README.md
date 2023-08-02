@@ -1,3 +1,5 @@
+Yes this was made with Replit.
+
 # Configuring a Repl
 
 Every new repl comes with a `.replit` and a `replit.nix` file that let you configure your repl to do just about anything in any language!
