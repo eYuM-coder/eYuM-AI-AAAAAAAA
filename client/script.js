@@ -119,8 +119,10 @@ modeToggle.addEventListener("click", () => {
   if(app.classList.contains("dark-mode")) {
     app.classList.toggle("dark-mode");
     app.classList.toggle("light-mode");
+    modeToggle.innerHTML = "Dark mode";
   } else {
     app.classList.toggle("light-mode");
     app.classList.toggle("dark-mode");
+    modeToggle.innerHTML = "Light mode";
   }
 })
