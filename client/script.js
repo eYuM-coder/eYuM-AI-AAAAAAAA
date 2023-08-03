@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('https://eyum-ai.onrender.com', {
+    const response = await fetch('https://eyumaiserver.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
