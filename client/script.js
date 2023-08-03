@@ -3,6 +3,8 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector("#chat_container");
+const modeToggle = document.getElementById("mode-toggle");
+const app = document.querySelector(".app");
 
 let loadInterval;
 
@@ -110,3 +112,15 @@ form.addEventListener('keyup', (e) => {
     handleSubmit(e);
   }
 });
+
+modeToggle.addEventListener("click", () => {
+  app.classList.toggle("dark-mode");
+
+  if(app.classList.contains("dark-mode")) {
+    app.classList.toggle("dark-mode");
+    app.classList.toggle("light-mode");
+  } else {
+    app.classList.toggle("light-mode");
+    app.classList.toggle("dark-mode");
+  }
+})
