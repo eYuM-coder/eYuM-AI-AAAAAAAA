@@ -3,9 +3,9 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const body = document.querySelector("html");
-const chat = document.querySelector('.chat');
-const chatContainer = document.querySelector("#chat_container");
+const chat = document.querySelector(".chat");
 const themeChanger = document.querySelector("#mode-toggle");
+const chatContainer = document.querySelector("#chat_container");
 
 let loadInterval;
 
