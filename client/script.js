@@ -115,6 +115,8 @@ themeChanger.addEventListener('click', () => {
   form.classList.toggle('light');
   chatContainer.classList.toggle('dark');
   chatContainer.classList.toggle('light');
+  chat.classList.toggle('dark');
+  chat.classList.toggle('light');
   if(body.classList.contains('dark')) {
     themeChanger.textContent = "Light mode";
   } else {
