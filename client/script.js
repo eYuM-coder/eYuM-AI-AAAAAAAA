@@ -3,8 +3,8 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector("#chat_container");
-const modeToggle = document.getElementById("mode-toggle");
-const app = document.querySelector(".app");
+const themeChanger = document.querySelector("#mode-toggle");
+const body = document.querySelector("html");
 
 let loadInterval;
 
@@ -107,22 +107,21 @@ const handleSubmit = async (e) => {
 }
 
 form.addEventListener('submit', handleSubmit);
+themeChanger.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
+  form.classList.toggle('dark');
+  form.classList.toggle('light');
+  chatContainer.classList.toggle('dark');
+  chatContainer.classList.toggle('light');
+  if(body.classList.contains('dark')) {
+    themeChanger.textContent = "Light mode";
+  } else {
+    themeChanger.textContent = "Dark mode";
+  }
+});
 form.addEventListener('keyup', (e) => {
   if(e.keyCode === 13) {
     handleSubmit(e);
   }
 });
-
-modeToggle.addEventListener("click", () => {
-  app.classList.toggle("dark-mode");
-
-  if(app.classList.contains("dark-mode")) {
-    app.classList.toggle("dark-mode");
-    app.classList.toggle("light-mode");
-    modeToggle.innerHTML = "Dark mode";
-  } else {
-    app.classList.toggle("light-mode");
-    app.classList.toggle("dark-mode");
-    modeToggle.innerHTML = "Light mode";
-  }
-})
