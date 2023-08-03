@@ -2,9 +2,10 @@ import bot from './assets/bot.svg';
 import user from './assets/user.svg';
 
 const form = document.querySelector('form');
+const body = document.querySelector("html");
+const chat = document.querySelector('chat');
 const chatContainer = document.querySelector("#chat_container");
 const themeChanger = document.querySelector("#mode-toggle");
-const body = document.querySelector("html");
 
 let loadInterval;
 
@@ -45,14 +46,14 @@ function chatStripe(isAi, value, uniqueId) {
   return (
     `
       <div class="wrapper ${isAi && 'ai'}">
-        <div class="chat">
-          <div class="profile">
+        <div class="chat light">
+          <div class="profile light">
             <img 
               src=${isAi ? bot : user}
               alt="${isAi ? 'bot' : 'user'}"
             />
           </div>
-          <div class="message" id=${uniqueId}>${value}</div>
+          <div class="message light" id=${uniqueId}>${value}</div>
         </div>
       </div>
     `
