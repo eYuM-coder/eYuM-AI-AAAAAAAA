@@ -1,16 +1,35 @@
-<!doctype html>
-<html lang="en" class="light">
+<!DOCTYPE html>
+<html class="light" style="color-scheme: light;" lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eYuM AI - A multipurpose AI for all your needs!</title>
-    <link rel="stylesheet" href="style.css">
+    <title>eYuM AI - An AI Language Model</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="light">
+  <body>
     <div id="app">
       <script>!function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');var e=localStorage.getItem('theme');if('system'===e||(!e&&true)){var t='(prefers-color-scheme: dark)',m=window.matchMedia(t);if(m.media!==t||m.matches){d.style.colorScheme = 'dark';c.add('dark')}else{d.style.colorScheme = 'light';c.add('light')}}else if(e){c.add(e|| '')}if(e==='light'||e==='dark')d.style.colorScheme=e}catch(e){}}()</script>
-      <button id="mode-toggle">Light Mode</button>
+      <h1>eYuM AI</h1>
+      <table>
+        <tr>
+          <th>Capabilities</th>
+          <th>Limitations</th>
+        </tr>
+        <tr>
+          <td class="light">Remembers what user said earlier in the conversation</td>
+          <td class="light">May occasionally generate incorrect information</td>
+        </tr>
+        <tr>
+          <td class="light">Allows user to provide follow-up corrections</td>
+          <td class="light">May occasionally produce harmful instructions or biased content</td>
+        </tr>
+        <tr>
+          <td class="light">Trained to decline inappropriate reuqests</td>
+          <td class="light">Limited knowledge of world and events after 2023</td>
+        </tr>
+      </table>
+      <button type="button" id="mode-toggle">Dark mode</button>
       <div id="chat_container" class="light"></div>
 
       <form class="light">
@@ -18,6 +37,7 @@
         <button type="submit"><img src="assets/send.svg" alt="send" /></button>
       </form>
     </div>
+
     <script type="module" src="script.js"></script>
   </body>
 </html>

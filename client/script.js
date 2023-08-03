@@ -3,7 +3,11 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const body = document.querySelector("html");
-const chat = document.querySelector(".chat");
+const table = document.querySelector('table');
+const tds = table.querySelectorAll('td');
+const formstyle = document.querySelector('form');
+const element = document.querySelector('html');
+const chat = document.querySelector("chat");
 const themeChanger = document.querySelector("#mode-toggle");
 const chatContainer = document.querySelector("#chat_container");
 
@@ -111,6 +115,10 @@ form.addEventListener('submit', handleSubmit);
 themeChanger.addEventListener('click', () => {
   body.classList.toggle('dark');
   body.classList.toggle('light');
+  tds.forEach(td => {
+    td.classList.toggle('dark');
+    td.classList.toggle('light');
+  })
   form.classList.toggle('dark');
   form.classList.toggle('light');
   chatContainer.classList.toggle('dark');
