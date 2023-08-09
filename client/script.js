@@ -9,7 +9,6 @@ const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
-const chatStripes = chatContainer.querySelectorAll('div')
 const textarea = document.querySelector('textarea')
 
 let loadInterval
@@ -132,7 +131,7 @@ themeChanger.addEventListener('click', () => {
     form.classList.toggle('light');
     chatContainer.classList.toggle('dark');
     chatContainer.classList.toggle('light');
-    chatStripes.forEach(chat => {
+    chatContainer.querySelectorAll('.wrapper.ai').forEach(chat => {
       chat.classList.toggle('dark');
       chat.classList.toggle('light');
     });
