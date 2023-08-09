@@ -76,11 +76,11 @@ html.dark {
   padding: 15px;
 }
 
-.ai .light {
+.wrapper.ai.light {
   background: #40414F;
 }
 
-.ai .dark {
+.wrapper.ai.dark {
   background: #F7F7F8;
 }
 
