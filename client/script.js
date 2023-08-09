@@ -10,6 +10,7 @@ const element = document.querySelector('html')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
 const textarea = document.querySelector('textarea')
+let currentTheme = 'light';
 
 let loadInterval
 
@@ -54,7 +55,7 @@ function generateUniqueId() {
 function chatStripe(isAi, value, uniqueId) {
     return (
         `
-        <div class="wrapper ${isAi && 'ai'} light">
+        <div class="wrapper ${isAi && 'ai'} ${currentTheme}">
             <div class="chat">
                 <div class="profile">
                     <img 
@@ -139,8 +140,10 @@ themeChanger.addEventListener('click', () => {
   textarea.classList.toggle('light');
   if (body.classList.contains('dark')) {
     themeChanger.textContent = "Light mode";
+    currentTheme = 'dark';
   } else {
     themeChanger.textContent = "Dark mode";
+    currentTheme = 'light';
   }
 });
 form.addEventListener('keyup', (e) => {
