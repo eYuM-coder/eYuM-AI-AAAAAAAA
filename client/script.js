@@ -9,7 +9,7 @@ const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
-const chatStripes = chatContainer.querySelectorAll('.wrapper')
+const chatStripes = chatContainer.querySelectorAll('div')
 const textarea = document.querySelector('textarea')
 
 let loadInterval
