@@ -84,7 +84,7 @@ html.dark {
   background: #40414F;
 }
 
-.chat.light {
+.chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -108,7 +108,15 @@ html.dark {
 }
 
 .ai .profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  
   background: #10a37f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile img {
