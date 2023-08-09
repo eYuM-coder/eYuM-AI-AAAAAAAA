@@ -84,7 +84,7 @@ html.dark {
   background: #40414F;
 }
 
-.wrapper.ai.chat.light {
+.chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
