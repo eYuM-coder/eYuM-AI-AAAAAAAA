@@ -7,9 +7,9 @@ const table = document.querySelector('table')
 const tds = table.querySelectorAll('td')
 const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
-const chatStripes = document.querySelectorAll('.wrapper')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
+const chatStripes = chatContainer.querySelectorAll('.wrapper')
 const textarea = document.querySelector('textarea')
 
 let loadInterval
@@ -55,7 +55,7 @@ function generateUniqueId() {
 function chatStripe(isAi, value, uniqueId) {
     return (
         `
-        <div class="wrapper ${isAi && 'ai'}">
+        <div class="wrapper ${isAi && 'ai'} light">
             <div class="chat">
                 <div class="profile">
                     <img 
