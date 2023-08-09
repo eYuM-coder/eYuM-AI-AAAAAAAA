@@ -95,7 +95,7 @@ html.dark {
   gap: 10px;
 }
 
-.profile {
+.profile.light {
   width: 36px;
   height: 36px;
   border-radius: 5px;
@@ -107,7 +107,7 @@ html.dark {
   align-items: center;
 }
 
-.ai .profile {
+.ai .profile.light {
   width: 36px;
   height: 36px;
   border-radius: 5px;

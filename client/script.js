@@ -12,7 +12,7 @@ const chatContainer = document.querySelector('#chat_container')
 const textarea = document.querySelector('textarea')
 let currentTheme = 'light';
 
-let loadInterval
+let loadInterval;
 
 function loader(element) {
     element.textContent = ''
@@ -33,10 +33,10 @@ function typeText(element, text) {
 
     let interval = setInterval(() => {
         if (index < text.length) {
-            element.innerHTML += text.charAt(index)
-            index++
+            element.innerHTML += text.charAt(index);
+            index++;
         } else {
-            clearInterval(interval)
+            clearInterval(interval);
         }
     }, 20)
 }
@@ -67,7 +67,7 @@ function chatStripe(isAi, value, uniqueId) {
             </div>
         </div>
     `
-    )
+    );
 }
 
 const handleSubmit = async (e) => {
