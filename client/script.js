@@ -7,7 +7,7 @@ const table = document.querySelector('table')
 const tds = table.querySelectorAll('td')
 const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
-const chat = document.querySelector('#chat_container .wrapper')
+const chat = document.querySelectorAll('.wrapper')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
 
