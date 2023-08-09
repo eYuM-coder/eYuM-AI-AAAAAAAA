@@ -76,11 +76,11 @@ html.dark {
   padding: 15px;
 }
 
-.ai.light {
+#chat_container .ai .light {
   background: #40414F;
 }
 
-.ai.dark {
+#chat_container .ai .dark {
   background: #F7F7F8;
 }
 
