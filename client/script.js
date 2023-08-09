@@ -10,6 +10,7 @@ const element = document.querySelector('html')
 const chatStripes = document.querySelectorAll('#chat_container.wrapper.chat')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
+const textarea = document.querySelector('textarea')
 
 let loadInterval
 
@@ -135,6 +136,8 @@ themeChanger.addEventListener('click', () => {
       chatStripe.classList.toggle('dark');
       chatStripe.classList.toggle('light');
     });
+  textarea.classList.toggle('dark');
+  textarea.classList.toggle('light');
   if (body.classList.contains('dark')) {
     themeChanger.textContent = "Light mode";
   } else {
