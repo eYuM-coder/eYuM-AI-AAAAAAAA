@@ -117,7 +117,22 @@ html.dark {
   object-fit: contain;
 }
 
-.message {
+.message.light {
+  flex: 1;
+  
+  color: #000000;
+  font-size: 20px;
+  
+  max-width: 100%;
+  overflow-x: scroll;
+
+  white-space: pre-wrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.message.dark {
   flex: 1;
 
   color: #dcdcdc;
