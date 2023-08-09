@@ -7,7 +7,7 @@ const table = document.querySelector('table')
 const tds = table.querySelectorAll('td')
 const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
-const chatStripes = document.querySelectorAll('#chat_container.wrapper.chat')
+const chatStripes = document.querySelectorAll('.wrapper')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
 const textarea = document.querySelector('textarea')
@@ -56,14 +56,14 @@ function chatStripe(isAi, value, uniqueId) {
     return (
         `
         <div class="wrapper ${isAi && 'ai'} light">
-            <div class="chat light">
-                <div class="profile light">
+            <div class="chat">
+                <div class="profile">
                     <img 
                       src=${isAi ? bot : user} 
                       alt="${isAi ? 'bot' : 'user'}" 
                     />
                 </div>
-                <div class="message light" id=${uniqueId}>${value}</div>
+                <div class="message" id=${uniqueId}>${value}</div>
             </div>
         </div>
     `
@@ -132,9 +132,9 @@ themeChanger.addEventListener('click', () => {
     form.classList.toggle('light');
     chatContainer.classList.toggle('dark');
     chatContainer.classList.toggle('light');
-    chatStripes.forEach(chatStripe => {
-      chatStripe.classList.toggle('dark');
-      chatStripe.classList.toggle('light');
+    chatStripes.forEach(chat => {
+      chat.classList.toggle('dark');
+      chat.classList.toggle('light');
     });
   textarea.classList.toggle('dark');
   textarea.classList.toggle('light');
