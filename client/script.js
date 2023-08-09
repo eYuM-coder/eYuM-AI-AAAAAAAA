@@ -7,7 +7,7 @@ const table = document.querySelector('table')
 const tds = table.querySelectorAll('td')
 const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
-const chat = document.querySelector('.wrapper')
+const chat = document.querySelector('#chat_container .wrapper')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
 
@@ -54,7 +54,7 @@ function generateUniqueId() {
 function chatStripe(isAi, value, uniqueId) {
     return (
         `
-        <div class="wrapper ${isAi && 'ai'}">
+        <div class="wrapper ${isAi && 'ai'} light">
             <div class="chat light">
                 <div class="profile light">
                     <img 
