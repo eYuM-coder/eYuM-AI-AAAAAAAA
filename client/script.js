@@ -15,7 +15,7 @@ let currentTheme = 'light';
 let loadInterval;
 
 function loader(element) {
-    element.textContent = ''
+    element.textContent = '.'
 
     loadInterval = setInterval(() => {
         // Update the text content of the loading indicator
@@ -23,7 +23,7 @@ function loader(element) {
 
         // If the loading indicator has reached three dots, reset it
         if (element.textContent === '....') {
-            element.textContent = '';
+            element.textContent = '.';
         }
     }, 300);
 }
