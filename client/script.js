@@ -7,7 +7,7 @@ const table = document.querySelector('table')
 const tds = table.querySelectorAll('td')
 const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
-const chat = document.querySelectorAll('.wrapper')
+const chatStripes = document.querySelectorAll('.wrapper')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
 
@@ -131,8 +131,10 @@ themeChanger.addEventListener('click', () => {
     form.classList.toggle('light');
     chatContainer.classList.toggle('dark');
     chatContainer.classList.toggle('light');
-    chat.classList.toggle('dark');
-    chat.classList.toggle('light');
+    chatStripes.forEach(chatStripe => {
+      chatStripe.classList.toggle('dark');
+      chatStripe.classList.toggle('light');
+    });
   if (body.classList.contains('dark')) {
     themeChanger.textContent = "Light mode";
   } else {
