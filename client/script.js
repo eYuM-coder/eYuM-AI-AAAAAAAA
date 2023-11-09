@@ -121,6 +121,15 @@ const handleSubmit = async (e) => {
 }
 
 form.addEventListener('submit', handleSubmit)
+window.onload(() => {
+  if(body.classList.contains('dark')){
+    themeChanger.textContent = "Light Mode";
+    currentTheme = 'dark';
+  } else {
+    themeChanger.textContent = "Dark Mode";
+    currentTheme = 'light';
+  }
+})
 themeChanger.addEventListener('click', () => {
   body.classList.toggle('dark');
     body.classList.toggle('light');
