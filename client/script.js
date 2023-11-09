@@ -9,7 +9,6 @@ const formstyle = document.querySelector('form')
 const element = document.querySelector('html')
 const themeChanger = document.querySelector('#mode-toggle')
 const chatContainer = document.querySelector('#chat_container')
-const chat = document.querySelector('.wrapper.ai')
 const textarea = document.querySelector('textarea')
 let currentTheme = 'light';
 
@@ -133,8 +132,10 @@ themeChanger.addEventListener('click', () => {
     form.classList.toggle('light');
     chatContainer.classList.toggle('dark');
     chatContainer.classList.toggle('light');
-    chat.classList.toggle('dark');
-    chat.classList.toggle('light');
+    chatContainer.querySelectorAll('.wrapper.ai').forEach(chat => {
+      chat.classList.toggle('dark');
+      chat.classList.toggle('light');
+    });
   textarea.classList.toggle('dark');
   textarea.classList.toggle('light');
   if (body.classList.contains('dark')) {
