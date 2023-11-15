@@ -53,9 +53,9 @@ function generateUniqueId() {
 }
 
 function chatStripe(isAi, value, uniqueId) {
-  const italicizedText = boldText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-  const boldText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
   const formattedText = value.replace(/\*\*\*(.*?)\*\*\*/g, '<b><em>$1</em></b>');
+  const boldText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+  const italicizedText = boldText.replace(/\*(.*?)\*/g, '<em>$1</em>');
     return (
         `
         <div class="wrapper ${isAi && 'ai'} ${currentTheme}">
@@ -66,7 +66,7 @@ function chatStripe(isAi, value, uniqueId) {
                       alt="${isAi ? 'bot' : 'user'}" 
                     />
                 </div>
-                <div class="message" id=${uniqueId}>${formattedText}</div>
+                <div class="message" id=${uniqueId}>${italicizedText}</div>
             </div>
         </div>
     `
