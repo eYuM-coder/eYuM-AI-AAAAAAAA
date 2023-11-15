@@ -150,6 +150,8 @@ themeChanger.addEventListener('click', () => {
     });
   textarea.classList.toggle('dark');
   textarea.classList.toggle('light');
+  themeChanger.classList.toggle('dark');
+  themeChanger.classList.toggle('light');
   if (body.classList.contains('dark')) {
     themeChanger.textContent = "Light mode";
     currentTheme = 'dark';
