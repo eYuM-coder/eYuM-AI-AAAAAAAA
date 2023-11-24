@@ -39,6 +39,7 @@ function typeText(element, text) {
             index++;
         } else {
             clearInterval(interval);
+          chatStripe(true, text, uniqueId);
         }
     }, 20)
 }
