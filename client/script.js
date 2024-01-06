@@ -35,8 +35,8 @@ function typeText(element, text) {
 
     let interval = setInterval(() => {
         if (index < words.length) {
-          randomIndex = Math.floor(Math.random() * 5 + index);
-          const partialText = text.substring(index, randomIndex);
+          randomIndex = Math.floor(Math.random() * 5);
+          const partialText = text.substring(0, index);
           const remainingText = text.substring(index);
           const word = words[index];
             element.innerHTML += partialText;
