@@ -165,7 +165,7 @@ themeChanger.addEventListener('click', () => {
 });
 form.addEventListener('keyup', (e) => {
   if (e.keyCode === 13 && e.shiftKey) {
-    e.preventDefault();
+    console.log("Shift + Enter pressed");
   } else if (e.keyCode === 18) {
     e.preventDefault();
   } else if (e.keyCode === 13) {
