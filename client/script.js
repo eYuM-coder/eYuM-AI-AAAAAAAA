@@ -32,13 +32,15 @@ function typeText(element, text) {
   const words = text.split(' ');
     let index = 0;
     let randomIndex = 0;
+    let partialTextLength = 0;
 
     let interval = setInterval(() => {
-        if (index < words.length) {
+        if (partialTextLength < words.length) {
           randomIndex = Math.floor(Math.random() * 5);
           const partialText = text.substring(0, index);
           const remainingText = text.substring(index);
           const word = words[index];
+          partialTextLength = partialText.split(' ').length;
             element.innerHTML = partialText;
             index += randomIndex;
         } else {
