@@ -28,29 +28,24 @@ function loader(element) {
     }, 300);
 }
 
-function typeText(element, text) {
-  const words = text.split(' ');
-    let index = 0;
-    let randomIndex = 0;
-    let partialTextLength = 0;
-    let partialText = text.substring(0, index);
-    let remainingText = text.substring(index);
+function typeText(element, text, numCharactersToShow) {
+  const partialText = text.substring(0, numCharactersToShow);
+  const remainingText = text.substring(numCharactersToShow);
+  element.innerHTML = partialText;
+
+  let partialIndex = numCharactersToShow;
 
     let interval = setInterval(() => {
-        if (partialTextLength < words.length) {
-          randomIndex = Math.floor(Math.random() * 5);
-          partialText = text.substring(0, index);
-          remainingText = text.substring(index);
-          const word = words[index];
-          partialTextLength = partialText.split(' ').length;
-            element.innerHTML = partialText;
-            index += randomIndex;
+        if (partialIndex <= text.length) {
+          const partialWord = remainingText.substring(0, partialIndex);
+          element.innerHTML = partialText + partialWord;
+          partialIndex += Math.floor(Math.random() * numCharactersToShow) + 1;
         } else {
           clearInterval(interval);
           element.innerHTML = text;
           chatStripe(true, text, uniqueId);
         }
-    }, 20)
+    }, 50);
 }
 
 // generate unique ID for each message div of bot
@@ -126,7 +121,7 @@ const handleSubmit = async (e) => {
         const data = await response.json();
         const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
-        typeText(messageDiv, parsedData)
+        typeText(messageDiv, parsedData, 5)
     } else {
         const err = await response.text()
 
