@@ -118,7 +118,7 @@ const handleSubmit = async (e) => {
       const data = await response.json();
       const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
-      typeText(messageDiv, parsedData, 5)
+      typeText(messageDiv, parsedData)
     } else {
       const err = await response.text()
 
