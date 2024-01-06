@@ -39,7 +39,7 @@ function typeText(element, text) {
           const partialText = text.substring(0, index);
           const remainingText = text.substring(index);
           const word = words[index];
-            element.innerHTML += partialText;
+            element.innerHTML = partialText;
             index += randomIndex;
         } else {
           clearInterval(interval);
