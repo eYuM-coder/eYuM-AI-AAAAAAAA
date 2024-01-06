@@ -45,6 +45,7 @@ function typeText(element, text) {
             index += randomIndex;
         } else {
           clearInterval(interval);
+          element.innerHTML = text;
           chatStripe(true, text, uniqueId);
         }
     }, 20)
