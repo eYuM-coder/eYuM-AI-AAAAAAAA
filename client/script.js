@@ -15,72 +15,69 @@ let currentTheme = 'light';
 let loadInterval;
 
 function loader(element) {
-    element.textContent = '.'
+  element.textContent = '.'
 
-    loadInterval = setInterval(() => {
-        // Update the text content of the loading indicator
-        element.textContent += '.';
+  loadInterval = setInterval(() => {
+    // Update the text content of the loading indicator
+    element.textContent += '.';
 
-        // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '.';
-        }
-    }, 300);
+    // If the loading indicator has reached three dots, reset it
+    if (element.textContent === '....') {
+      element.textContent = '.';
+    }
+  }, 300);
 }
 
-function typeText(element, text, numCharactersToShow) {
-  const partialText = text.substring(0, numCharactersToShow);
-  const remainingText = text.substring(numCharactersToShow);
-  element.innerHTML = partialText;
+function typeText(element, text) {
+  const words = text.split(' ');
+  let index = 0;
 
-  let partialIndex = numCharactersToShow;
-
-    let interval = setInterval(() => {
-        if (partialIndex <= text.length) {
-          const partialWord = remainingText.substring(0, partialIndex);
-          element.innerHTML = partialText + partialWord;
-          partialIndex += Math.floor(Math.random() * numCharactersToShow) + 1;
-        } else {
-          clearInterval(interval);
-          element.innerHTML = text;
-          chatStripe(true, text, uniqueId);
-        }
-    }, 50);
+  let interval = setInterval(() => {
+    if (index < words.length) {
+      const word = words[index];
+      element.innerHTML += (index > 0 ? ' ' : '') + word;
+      index++;
+    } else {
+      clearInterval(interval);
+      chatStripe(true, text, uniqueId);
+    }
+  }, 50);
 }
 
 // generate unique ID for each message div of bot
 // necessary for typing text effect for that specific reply
 // without unique ID, typing text will work on every element
 function generateUniqueId() {
-    const timestamp = Date.now();
-    const randomNumber = Math.random();
-    const hexadecimalString = randomNumber.toString(16);
+  const timestamp = Date.now();
+  const randomNumber = Math.random();
+  const hexadecimalString = randomNumber.toString(16);
 
-    return `id-${timestamp}-${hexadecimalString}`;
+  return `id-${timestamp}-${hexadecimalString}`;
 }
 
 function chatStripe(isAi, value, uniqueId) {
   const formattedText = value.replace(/\*\*\*(.*?)\*\*\*/g, '<b><em>$1</em></b>');
   const boldText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
   const italicizedText = boldText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    return (
-        `
-        <div class="wrapper ${isAi && 'ai'} ${currentTheme}">
-            <div class="chat">
-                <div class="profile">
-                    <img 
-                      src=${isAi ? bot : user} 
-                      alt="${isAi ? 'bot' : 'user'}" 
-                    />
-                </div>
-                <div class="message" id=${uniqueId}>${italicizedText}</div>
-            </div>
-        </div>
+  return (
     `
-    );
+    <div class="wrapper ${isAi && 'ai'} ${currentTheme}">
+      <div class="chat">
+        <div class="profile">
+          <img 
+            src=${isAi ? bot : user} 
+            alt="${isAi ? 'bot' : 'user'}" 
+          />
+        </div>
+        <div class="message" id=${uniqueId}>${italicizedText}</div>
+      </div>
+    </div>
+  `
+  );
 }
 
 const handleSubmit = async (e) => {
+  if(e.keyCode != 16) {
     e.preventDefault()
 
     const data = new FormData(form)
@@ -105,29 +102,30 @@ const handleSubmit = async (e) => {
     loader(messageDiv)
 
     const response = await fetch('https://eyumaiserver.onrender.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            prompt: data.get('prompt')
-        })
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          prompt: data.get('prompt')
+      })
     })
 
     clearInterval(loadInterval)
     messageDiv.innerHTML = " "
 
     if (response.ok) {
-        const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+      const data = await response.json();
+      const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
-        typeText(messageDiv, parsedData, 5)
+      typeText(messageDiv, parsedData, 5)
     } else {
-        const err = await response.text()
+      const err = await response.text()
 
-        messageDiv.innerHTML = "Something went wrong"
-        alert(err)
+      messageDiv.innerHTML = "Something went wrong"
+      alert(err)
     }
+  }
 }
 
 form.addEventListener('submit', handleSubmit)
@@ -144,8 +142,8 @@ themeChanger.addEventListener('click', () => {
   body.classList.toggle('dark');
     body.classList.toggle('light');
     tds.forEach(td => {
-        td.classList.toggle('dark');
-        td.classList.toggle('light');
+      td.classList.toggle('dark');
+      td.classList.toggle('light');
     })
     form.classList.toggle('dark');
     form.classList.toggle('light');
@@ -168,8 +166,14 @@ themeChanger.addEventListener('click', () => {
   }
 });
 form.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        handleSubmit(e)
-    }
-  console.log(e.keyCode);
+  if (e.keyCode === 13) {
+    handleSubmit(e);
+  } else if (e.keyCode === 18) {
+    e.preventDefault();
+  }
+})
+form.addEventListener('keydown', (e) => {
+  if (e.keyCode === 16) {
+    handleSubmit(e);
+  }
 })
