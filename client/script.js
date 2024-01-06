@@ -29,11 +29,13 @@ function loader(element) {
 }
 
 function typeText(element, text) {
+  const words = text.split(' ');
   let index = 0;
 
   let interval = setInterval(() => {
-    if (index < text.length) {
-      element.innerHTML += text.charAt(index);
+    if (index < words.length) {
+      const word = words[index];
+      element.innerHTML += (index > 0 ? ' ' : '') + word;
       index++;
     } else {
       clearInterval(interval);
@@ -75,14 +77,16 @@ function chatStripe(isAi, value, uniqueId) {
 }
 
 const handleSubmit = async (e) => {
-  if(e.shiftKey) {
-    const data = new FormData(form)
-  } else {
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = new FormData(form)
+  const data = new FormData(form)
+  
+  if(e.shiftKey) {
+    return;
+  } else {
     // user's chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+    const userMessage = data.get('prompt');
+    chatContainer.innerHTML += chatStripe(false, userMessage)
   
     // to clear the textarea input 
     form.reset()
@@ -106,7 +110,7 @@ const handleSubmit = async (e) => {
           'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          prompt: data.get('prompt')
+        prompt: userMessage
       })
     })
   
@@ -115,8 +119,9 @@ const handleSubmit = async (e) => {
   
     if (response.ok) {
       const data = await response.json();
+      const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
   
-      typeText(messageDiv, data);
+      typeText(messageDiv, parsedData)
     } else {
       const err = await response.text()
   
