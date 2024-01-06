@@ -77,8 +77,6 @@ function chatStripe(isAi, value, uniqueId) {
 }
 
 const handleSubmit = async (e) => {
-  e.preventDefault()
-
   const data = new FormData(form)
 
   // user's chatstripe
@@ -169,6 +167,7 @@ form.addEventListener('keyup', (e) => {
   } else if (e.keyCode === 18) {
     e.preventDefault();
   } else if (e.keyCode === 13) {
+    e.preventDefault();
     handleSubmit(e);
   }
 })
