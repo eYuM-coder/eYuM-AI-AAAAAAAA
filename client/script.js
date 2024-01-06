@@ -41,7 +41,7 @@ function typeText(element, text) {
       clearInterval(interval);
       chatStripe(true, text, uniqueId);
     }
-  }, 50);
+  }, 20);
 }
 
 // generate unique ID for each message div of bot
