@@ -77,50 +77,56 @@ function chatStripe(isAi, value, uniqueId) {
 }
 
 const handleSubmit = async (e) => {
+  e.preventDefault();
+  
   const data = new FormData(form)
 
-  // user's chatstripe
-  chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
-
-  // to clear the textarea input 
-  form.reset()
-
-  // bot's chatstripe
-  const uniqueId = generateUniqueId()
-  chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
-
-  // to focus scroll to the bottom 
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-
-  // specific message div 
-  const messageDiv = document.getElementById(uniqueId)
-
-  // messageDiv.innerHTML = "..."
-  loader(messageDiv)
-
-  const response = await fetch('https://eyumaiserver.onrender.com', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        prompt: data.get('prompt')
-    })
-  })
-
-  clearInterval(loadInterval)
-  messageDiv.innerHTML = " "
-
-  if (response.ok) {
-    const data = await response.json();
-    const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
-
-    typeText(messageDiv, parsedData)
+  if (e.shiftKey) {
+    textarea.value += '\n';
   } else {
-    const err = await response.text()
-
-    messageDiv.innerHTML = "Something went wrong"
-    alert(err)
+    // user's chatstripe
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+  
+    // to clear the textarea input 
+    form.reset()
+  
+    // bot's chatstripe
+    const uniqueId = generateUniqueId()
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
+  
+    // to focus scroll to the bottom 
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  
+    // specific message div 
+    const messageDiv = document.getElementById(uniqueId)
+  
+    // messageDiv.innerHTML = "..."
+    loader(messageDiv)
+  
+    const response = await fetch('https://eyumaiserver.onrender.com', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          prompt: data.get('prompt')
+      })
+    })
+  
+    clearInterval(loadInterval)
+    messageDiv.innerHTML = " "
+  
+    if (response.ok) {
+      const data = await response.json();
+      const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+  
+      typeText(messageDiv, parsedData)
+    } else {
+      const err = await response.text()
+  
+      messageDiv.innerHTML = "Something went wrong"
+      alert(err)
+    }
   }
 }
 
@@ -162,9 +168,7 @@ themeChanger.addEventListener('click', () => {
   }
 });
 form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13 && e.shiftKey) {
-    console.log("Shift + Enter pressed");
-  } else if (e.keyCode === 18) {
+  if (e.keyCode === 18) {
     e.preventDefault();
   } else if (e.keyCode === 13) {
     e.preventDefault();
