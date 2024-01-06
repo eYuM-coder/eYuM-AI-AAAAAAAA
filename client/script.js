@@ -31,14 +31,18 @@ function loader(element) {
 function typeText(element, text) {
   const words = text.split(' ');
     let index = 0;
+    let randomIndex = 0;
 
     let interval = setInterval(() => {
         if (index < words.length) {
+          randomIndex = Math.floor(Math.random() * 5);
+          const partialText = text.substring(index, randomIndex);
+          const remainingText = text.substring(index);
           const word = words[index];
-            element.innerHTML += (index > 0 ? ' ' : '') + word;
-            index++;
+            element.innerHTML = partialText;
+            index += randomIndex;
         } else {
-            clearInterval(interval);
+          clearInterval(interval);
           chatStripe(true, text, uniqueId);
         }
     }, 20)
