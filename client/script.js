@@ -29,13 +29,11 @@ function loader(element) {
 }
 
 function typeText(element, text) {
-  const words = text.split(' ');
   let index = 0;
 
   let interval = setInterval(() => {
-    if (index < words.length) {
-      const word = words[index];
-      element.innerHTML += (index > 0 ? ' ' : '') + word;
+    if (index < text.length) {
+      element.innerHTML += text.charAt(index);
       index++;
     } else {
       clearInterval(interval);
