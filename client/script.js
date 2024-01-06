@@ -77,7 +77,7 @@ function chatStripe(isAi, value, uniqueId) {
 }
 
 const handleSubmit = async (e) => {
-  if(e.keyCode != 16) {
+  if(e.keyCode === 13 && !(e.keyCode === 16)) {
     e.preventDefault()
 
     const data = new FormData(form)
