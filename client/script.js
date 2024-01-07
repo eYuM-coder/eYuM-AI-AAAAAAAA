@@ -57,6 +57,7 @@ function chatStripe(isAi, value, uniqueId) {
   const formattedText = value.replace(/\*\*\*(.*?)\*\*\*/g, '<b><em>$1</em></b>');
   const boldText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
   const italicizedText = boldText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  const textWithNewLines = italicizedText.replace(/\n/g, '<br>');
   return (
     `
     <div class="wrapper ${isAi && 'ai'} ${currentTheme}">
