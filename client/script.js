@@ -29,13 +29,11 @@ function loader(element) {
 }
 
 function typeText(element, text) {
-  const words = text.split(' ');
   let index = 0;
 
   let interval = setInterval(() => {
-    if (index < words.length) {
-      const word = words[index];
-      element.innerHTML += (index > 0 ? ' ' : '') + word;
+    if (index <= text.length) {
+      element.innerHTML += text.charAt(index);
       index++;
     } else {
       clearInterval(interval);
@@ -119,7 +117,7 @@ const handleSubmit = async (e) => {
   
     if (response.ok) {
       const data = await response.json();
-      const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+      const parsedData = data.bot;
   
       typeText(messageDiv, parsedData)
     } else {
