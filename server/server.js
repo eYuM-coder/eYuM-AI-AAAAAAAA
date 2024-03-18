@@ -25,24 +25,18 @@ app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
-    const response = await axios.post(
-      openaiEndpoint,
-      {
-        model: 'gpt-3.5-turbo',
-        messaages: [
-          { role: 'user', content: prompt},
-        ],
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-      }
-    );
+    const response = await openai.completions.create({
+      model: "text-davinci-003",
+      prompt: prompt,
+      max_tokens: 3000,
+      temperature: 0,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0,
+    })
 
       res.status(200).send({
-        bot: response.data.choices[0].message.content;
+        bot: response.choices[0].text;
       })
   } catch (error) {
     console.log(error);
