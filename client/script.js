@@ -122,10 +122,10 @@ const handleSubmit = async (e) => {
   
       typeText(messageDiv, parsedData)
     } else {
-      const err = await response.text()
+      const data = await response.json()
   
-      messageDiv.innerHTML = `${err.message}`
-      alert(err)
+      messageDiv.innerHTML = `${data.error.message}`
+      alert(data.error.message)
     }
   }
 }
