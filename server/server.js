@@ -29,11 +29,10 @@ app.post('/', async (req, res) => {
     })
 
       res.status(200).send({
-        bot: response.choices[0].message.content;
+        bot: response.choices[0].message.content
       })
   } catch (error) {
     console.log(error);
-    
     res.status(500).send({ error });
   }
 });
