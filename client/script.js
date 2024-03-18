@@ -124,7 +124,7 @@ const handleSubmit = async (e) => {
     } else {
       const err = await response.text()
   
-      messageDiv.innerHTML = `${err}`
+      messageDiv.innerHTML = `${err.message}`
       alert(err)
     }
   }
