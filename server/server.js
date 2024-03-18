@@ -5,10 +5,8 @@ import OpenAI from 'openai';
 import axios from 'axios';
 dotenv.config();
 
-const openaiEndpoint = 'https://api.openai.com/v1/chat/completions';
-
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 const app = express();
