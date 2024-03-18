@@ -124,8 +124,8 @@ const handleSubmit = async (e) => {
     } else {
       const data = await response.json()
   
-      messageDiv.innerHTML = `${data.error.message}`
-      alert(data.error.message)
+      messageDiv.innerHTML = `${data.error.error.message}`
+      alert(data.error.error.message)
     }
   }
 }
