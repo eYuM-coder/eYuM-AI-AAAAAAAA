@@ -23,18 +23,13 @@ app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
-    const response = await openai.completions.create({
-      model: "text-davinci-003",
-      prompt: prompt,
-      max_tokens: 3000,
-      temperature: 0,
-      top_p: 1,
-      frequency_penalty: 0.5,
-      presence_penalty: 0,
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: "system", "content": "You are a helpful assistant." }, { role: "user", "content": prompt }]
     })
 
       res.status(200).send({
-        bot: response.choices[0].text;
+        bot: response.choices[0].message.content;
       })
   } catch (error) {
     console.log(error);
