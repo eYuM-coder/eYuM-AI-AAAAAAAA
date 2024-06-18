@@ -24,13 +24,12 @@ app.post('/', async (req, res) => {
 
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo-0125',
-      messages: [{ role: "system", "content": "You are a helpful assistant." }, { role: "user", "content": "Test" }]
+      messages: [{ role: "system", "content": "You are a helpful assistant." }, { role: "user", "content": prompt }]
     })
 
       res.status(200).send({
         bot: response.choices[0].message.content
       })
-    console.log(response.choices[0]);
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
