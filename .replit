@@ -2,3 +2,11 @@ run = "cd client && npm run dev"
 
 [nix]
 channel = "stable-22_11"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[deployment]
+deploymentTarget = "static"
+publicDir = "client"
